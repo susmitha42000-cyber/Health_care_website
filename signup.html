@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive signup experience for Stackly Health AI with premium healthcare styling and mobile-first layout.">
+    <meta name="theme-color" content="#0d6b5d">
+    <title>Sign Up | Stackly Health AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-shell auth-shell-reverse">
+        <section class="auth-panel" data-animate="fade-right">
+            <a href="index.html" class="auth-brand">
+                <img class="site-logo" src="assets/Logo.png" alt="Stackly logo">
+            </a>
+            <div class="auth-card auth-card-animated">
+                <div class="auth-header">
+                    <h2>Create Account</h2>
+                    <p>Join HealthAI to manage care, appointments, and digital health records.</p>
+                </div>
+                <form id="signupForm" class="auth-form" autocomplete="off">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Your full name" required autocomplete="name" inputmode="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@gmail.com" required>
+                    </div>
+                    <div class="form-group two-col">
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Create password" required>
+                        </div>
+                        <div>
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select Role</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="patient">Patient</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create My Account</button>
+                    <div class="social-auth">
+                        <p>Or sign up with</p>
+                        <div class="social-auth-grid">
+                            <a href="404.html" class="social-auth-btn" aria-label="Sign up with Google">
+                                <span class="social-auth-icon">G</span>
+                                <span>Google</span>
+                            </a>
+                            <a href="404.html" class="social-auth-btn" aria-label="Sign up with LinkedIn">
+                                <span class="social-auth-icon">in</span>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="404.html" class="social-auth-btn" aria-label="Sign up with Twitter">
+                                <span class="social-auth-icon">X</span>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="404.html" class="social-auth-btn" aria-label="Sign up with Facebook">
+                                <span class="social-auth-icon">f</span>
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="auth-visual signup-visual" data-animate="fade-left">
+            <img src="assets/sign in page.webp" alt="Medical staff in hospital corridor">
+            <div class="auth-visual-overlay"></div>
+            <div class="auth-visual-content">
+                <span class="eyebrow">Create your digital care space</span>
+                <h1>Health-focused signup with a stronger, more modern patient experience.</h1>
+                <p>From first visit to specialist follow-up, organize every step with clarity and confidence.</p>
+            </div>
+            <div class="auth-floating-card auth-floating-top">
+                <strong>Health Records</strong>
+                <span>Keep reports, prescriptions, and updates in one place.</span>
+            </div>
+            <div class="auth-floating-card auth-floating-bottom">
+                <strong>Fast Onboarding</strong>
+                <span>Create your account and start booking in minutes.</span>
+            </div>
+        </section>
+    </div>
+
+    <a href="login.html" class="fab-button" aria-label="Open login page">
+        <span class="fab-icon">→</span>
+        <span class="fab-label">Login</span>
+    </a>
+
+    <div class="site-orbs" aria-hidden="true">
+        <span class="orb orb-one"></span>
+        <span class="orb orb-two"></span>
+        <span class="orb orb-three"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
