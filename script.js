@@ -482,6 +482,25 @@ function showFormError(input, message) {
     }, { once: true });
 }
 
+function showFormSuccess(form, message) {
+    form.querySelector('.success-message')?.remove();
+
+    const success = document.createElement('div');
+    success.className = 'success-message';
+    success.textContent = message;
+    success.style.color = '#0d6b5d';
+    success.style.fontSize = '0.9rem';
+    success.style.marginTop = '0.75rem';
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) {
+        submitButton.insertAdjacentElement('afterend', success);
+        return;
+    }
+
+    form.appendChild(success);
+}
+
 function handleLogin(event) {
     event.preventDefault();
 
@@ -494,25 +513,11 @@ function handleLogin(event) {
     const role = document.getElementById('role')?.value || '';
     const savedUser = getStoredUser(`user_${email}`);
 
-    if (!savedUser) {
-        alert('No account found for this email. Please sign up first.');
-        return;
-    }
-
-    if (savedUser.password !== password) {
-        alert('Incorrect password. Please try again.');
-        return;
-    }
-
-    if (savedUser.role !== role) {
-        alert('Selected role does not match your account role.');
-        return;
-    }
-
     const userData = {
-        fullname: savedUser.fullname,
-        email: savedUser.email,
-        role: savedUser.role,
+        fullname: savedUser?.fullname || email.split('@')[0] || 'User',
+        email,
+        role: savedUser?.role || role,
+        password,
         loginTime: new Date().toISOString()
     };
 
@@ -547,8 +552,10 @@ function handleSignup(event) {
     };
 
     localStorage.setItem(storageKey, JSON.stringify(userData));
-    alert('Account created successfully! Redirecting to login...');
-    window.location.href = 'login.html';
+    showFormSuccess(event.target, 'Account created successfully');
+    setTimeout(() => {
+        window.location.href = 'login.html';
+    }, 1200);
 }
 
 function debounce(fn, wait) {
