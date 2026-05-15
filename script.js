@@ -9,6 +9,117 @@ document.addEventListener('DOMContentLoaded', () => {
     initDashboardAnimations();
 });
 
+const dashboardRoleContent = {
+    doctor: {
+        kicker: 'Doctor workflow hub',
+        actions: ['Start Consultation', 'Review Lab Results', 'Patient Search', 'Approve Follow-ups'],
+        appointments: {
+            title: 'Doctor Schedule',
+            description: 'See consultations, room assignments, and next patient touchpoints for the day.',
+            listTitle: 'Upcoming Visits',
+            stats: [
+                { icon: 'SL', value: '8', label: 'Open Slots' },
+                { icon: 'TD', value: '3', label: 'Today' },
+                { icon: 'CF', value: '5', label: 'Confirmed' },
+                { icon: 'RS', value: '1', label: 'Needs Reschedule' }
+            ],
+            items: [
+                { icon: 'RM', title: 'Room 4: Sarah Lee follow-up and medication review', meta: 'Today, 11:30 AM' },
+                { icon: 'NEW', title: 'Mark Diaz first consultation with imaging summary ready', meta: 'Tomorrow, 09:00 AM' },
+                { icon: 'LAB', title: 'Emma Patel lab interpretation and treatment adjustment', meta: 'Tomorrow, 02:00 PM' }
+            ]
+        },
+        reports: {
+            title: 'Clinical Reports',
+            description: 'Review diagnostics, summaries, and treatment-ready reports prepared for your cases.',
+            listTitle: 'Priority Reports',
+            stats: [
+                { icon: 'REP', value: '14', label: 'Recent Reports' },
+                { icon: 'SUM', value: '5', label: 'New Summaries' },
+                { icon: 'REV', value: '9', label: 'Reviewed' },
+                { icon: 'ARC', value: '20', label: 'Archived' }
+            ],
+            items: [
+                { icon: 'CBC', title: 'Blood test results for Patient #543 are ready for assessment', meta: 'Completed 1 hour ago' },
+                { icon: 'WK', title: 'Weekly chronic care summary highlights two improved cases', meta: 'Completed yesterday' },
+                { icon: 'IMG', title: 'Radiology note uploaded with side-by-side comparison images', meta: 'Completed 2 days ago' }
+            ]
+        }
+    },
+    patient: {
+        kicker: 'Patient wellness space',
+        actions: ['Book Appointment', 'View Prescriptions', 'Open Care Plan', 'Message Support'],
+        appointments: {
+            title: 'My Appointments',
+            description: 'Keep track of upcoming visits, reminders, and everything you need before arriving.',
+            listTitle: 'Visit Timeline',
+            stats: [
+                { icon: 'UP', value: '2', label: 'Upcoming Visits' },
+                { icon: 'RM', value: '1', label: 'Reminder Today' },
+                { icon: 'ON', value: '3', label: 'Past Check-ins' },
+                { icon: 'VC', value: '1', label: 'Video Visit' }
+            ],
+            items: [
+                { icon: 'DR', title: 'Follow-up with Dr. Reed for progress review and next steps', meta: 'Tomorrow, 10:00 AM' },
+                { icon: 'LAB', title: 'Sample collection visit with fasting reminder already sent', meta: 'Friday, 08:15 AM' },
+                { icon: 'VID', title: 'Nutrition coaching video session with shared meal plan notes', meta: 'Monday, 06:00 PM' }
+            ]
+        },
+        reports: {
+            title: 'My Reports',
+            description: 'Open plain-language health reports, test results, and care summaries in one place.',
+            listTitle: 'Recent Updates',
+            stats: [
+                { icon: 'NEW', value: '4', label: 'New Reports' },
+                { icon: 'DOC', value: '2', label: 'Doctor Notes' },
+                { icon: 'LAB', value: '1', label: 'Lab Result' },
+                { icon: 'ARC', value: '12', label: 'Saved Records' }
+            ],
+            items: [
+                { icon: 'HLT', title: 'Blood report published with a simple explanation from your doctor', meta: 'Completed today' },
+                { icon: 'SUM', title: 'Weekly wellness summary shows better sleep and hydration trends', meta: 'Completed yesterday' },
+                { icon: 'RX', title: 'Medication plan updated with revised morning dosage guidance', meta: 'Completed 2 days ago' }
+            ]
+        }
+    },
+    admin: {
+        kicker: 'Admin operations center',
+        actions: ['Approve Accounts', 'Open Audit Trail', 'Review Alerts', 'Manage Teams'],
+        appointments: {
+            title: 'Operations Schedule',
+            description: 'Monitor onboarding reviews, leadership meetings, and system events across the platform.',
+            listTitle: 'Operational Events',
+            stats: [
+                { icon: 'MT', value: '6', label: 'Team Events' },
+                { icon: 'RV', value: '4', label: 'Approval Reviews' },
+                { icon: 'AL', value: '2', label: 'Alert Windows' },
+                { icon: 'EX', value: '1', label: 'Maintenance Run' }
+            ],
+            items: [
+                { icon: 'APP', title: 'Doctor credential review block for newly submitted profiles', meta: 'Today, 11:00 AM' },
+                { icon: 'OPS', title: 'Operations leadership check-in on support and verification backlog', meta: 'Today, 03:00 PM' },
+                { icon: 'SYS', title: 'Low-traffic maintenance window for analytics sync and backups', meta: 'Sunday, 01:00 AM' }
+            ]
+        },
+        reports: {
+            title: 'Admin Reports',
+            description: 'Track compliance, growth, uptime, and support analytics with role-based visibility.',
+            listTitle: 'Monitoring Reports',
+            stats: [
+                { icon: 'CMP', value: '7', label: 'Compliance Logs' },
+                { icon: 'SEC', value: '3', label: 'Security Reviews' },
+                { icon: 'KPI', value: '11', label: 'KPI Snapshots' },
+                { icon: 'ARC', value: '26', label: 'Archived Files' }
+            ],
+            items: [
+                { icon: 'AUD', title: 'Daily audit export confirms permission updates and access integrity', meta: 'Completed 40 minutes ago' },
+                { icon: 'UP', title: 'Uptime report shows stable performance during peak login periods', meta: 'Completed today' },
+                { icon: 'SUP', title: 'Support dashboard summary highlights faster turnaround on new tickets', meta: 'Completed yesterday' }
+            ]
+        }
+    }
+};
+
 function initNavbar() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -222,19 +333,25 @@ function showDashboardSection(sectionId) {
 }
 
 function renderRoleDashboard(role) {
+    const safeRole = dashboardRoleContent[role] ? role : 'patient';
+
     document.querySelectorAll('.role-dashboard').forEach(section => {
         section.classList.add('hidden');
     });
 
-    const selectedDashboard = document.getElementById(`${role}Dashboard`);
+    const selectedDashboard = document.getElementById(`${safeRole}Dashboard`);
     if (selectedDashboard) {
         selectedDashboard.classList.remove('hidden');
     }
+
+    applyDashboardRoleContent(safeRole);
 }
 
 function displayUserInfo(userData) {
     const welcomeMessage = document.getElementById('welcomeMessage');
     const dashboardUserEmail = document.getElementById('dashboardUserEmail');
+    const dashboardKicker = document.getElementById('dashboardKicker');
+    const roleContent = dashboardRoleContent[userData.role] || dashboardRoleContent.patient;
 
     if (welcomeMessage) {
         welcomeMessage.textContent = `Welcome, ${userData.fullname}`;
@@ -242,6 +359,80 @@ function displayUserInfo(userData) {
 
     if (dashboardUserEmail) {
         dashboardUserEmail.textContent = userData.email;
+    }
+
+    if (dashboardKicker) {
+        dashboardKicker.textContent = roleContent.kicker;
+    }
+}
+
+function applyDashboardRoleContent(role) {
+    const roleContent = dashboardRoleContent[role] || dashboardRoleContent.patient;
+
+    document.body.classList.remove('theme-doctor', 'theme-patient', 'theme-admin');
+    document.body.classList.add(`theme-${role}`);
+
+    renderDashboardActions(roleContent.actions);
+    renderDashboardSection(roleContent.appointments, {
+        titleId: 'appointmentsTitle',
+        descriptionId: 'appointmentsDescription',
+        listTitleId: 'appointmentsListTitle',
+        statsId: 'appointmentsStats',
+        listId: 'appointmentsList'
+    });
+    renderDashboardSection(roleContent.reports, {
+        titleId: 'reportsTitle',
+        descriptionId: 'reportsDescription',
+        listTitleId: 'reportsListTitle',
+        statsId: 'reportsStats',
+        listId: 'reportsList'
+    });
+}
+
+function renderDashboardActions(actions) {
+    actions.forEach((label, index) => {
+        const button = document.getElementById(`actionBtn${index + 1}`);
+        if (!button) {
+            return;
+        }
+
+        button.textContent = label;
+    });
+}
+
+function renderDashboardSection(content, targets) {
+    const title = document.getElementById(targets.titleId);
+    const description = document.getElementById(targets.descriptionId);
+    const listTitle = document.getElementById(targets.listTitleId);
+    const statsContainer = document.getElementById(targets.statsId);
+    const listContainer = document.getElementById(targets.listId);
+
+    if (title) title.textContent = content.title;
+    if (description) description.textContent = content.description;
+    if (listTitle) listTitle.textContent = content.listTitle;
+
+    if (statsContainer) {
+        statsContainer.innerHTML = content.stats.map(item => `
+            <div class="stat-card">
+                <div class="stat-icon">${item.icon}</div>
+                <div class="stat-info">
+                    <h3>${item.value}</h3>
+                    <p>${item.label}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    if (listContainer) {
+        listContainer.innerHTML = content.items.map(item => `
+            <div class="activity-item">
+                <div class="activity-icon">${item.icon}</div>
+                <div class="activity-content">
+                    <p>${item.title}</p>
+                    <span>${item.meta}</span>
+                </div>
+            </div>
+        `).join('');
     }
 }
 

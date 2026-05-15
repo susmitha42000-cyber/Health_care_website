@@ -538,15 +538,42 @@ a:focus-visible {
 }
 
 .doctor-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 30px;
     overflow: hidden;
+    padding: 1.6rem 1.4rem 1.5rem;
+    background:
+        radial-gradient(circle at top, rgba(24, 166, 146, 0.12), transparent 58%),
+        rgba(255, 255, 255, 0.96);
+    border: 1px solid color-mix(in srgb, var(--role-accent) 12%, white);
+    box-shadow: 0 14px 34px rgba(18, 66, 57, 0.10);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.doctor-card img {
+.doctor-photo-wrap {
+    width: 190px;
+    height: 190px;
+    flex: 0 0 190px;
+    padding: 8px;
+    border-radius: 50%;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(216, 244, 239, 0.88));
+    box-shadow:
+        0 16px 30px rgba(13, 70, 60, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.doctor-photo {
+    display: block;
     width: 100%;
-    height: 360px;
+    height: 100%;
+    border-radius: 50%;
     object-fit: cover;
+    object-position: center 20%;
+    border: 3px solid rgba(255, 255, 255, 0.92);
 }
 
 .doctor-card.featured {
@@ -554,13 +581,30 @@ a:focus-visible {
     border: 1px solid rgba(26, 163, 141, 0.24);
 }
 
+.doctor-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 42px rgba(18, 66, 57, 0.14);
+}
+
 .doctor-info {
-    padding: 1.5rem;
+    width: 100%;
+    padding: 1.4rem 0 0;
+    text-align: center;
 }
 
 .doctor-info h3 {
     font-size: 1.5rem;
     margin-bottom: 0.3rem;
+}
+
+.doctor-role {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    color: var(--role-accent);
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .doctor-info p {
@@ -1103,9 +1147,35 @@ a:focus-visible {
 }
 
 .dashboard-page {
+    --role-accent: var(--accent);
+    --role-accent-2: var(--accent-2);
+    --role-glow: rgba(26, 163, 141, 0.20);
+    --role-surface: rgba(255, 255, 255, 0.82);
     background:
-        radial-gradient(circle at 10% 12%, rgba(26, 163, 141, 0.14), transparent 25%),
+        radial-gradient(circle at 10% 12%, var(--role-glow), transparent 25%),
+        radial-gradient(circle at 88% 18%, rgba(255, 183, 77, 0.16), transparent 24%),
         linear-gradient(180deg, #f4fbf8 0%, #edf7f3 100%);
+}
+
+.dashboard-page.theme-doctor {
+    --role-accent: #0d6b5d;
+    --role-accent-2: #20b29a;
+    --role-glow: rgba(32, 178, 154, 0.22);
+    --role-surface: rgba(255, 255, 255, 0.86);
+}
+
+.dashboard-page.theme-patient {
+    --role-accent: #db6f2a;
+    --role-accent-2: #f4a742;
+    --role-glow: rgba(244, 167, 66, 0.24);
+    --role-surface: rgba(255, 249, 241, 0.88);
+}
+
+.dashboard-page.theme-admin {
+    --role-accent: #2457c5;
+    --role-accent-2: #6d8cff;
+    --role-glow: rgba(109, 140, 255, 0.24);
+    --role-surface: rgba(245, 248, 255, 0.88);
 }
 
 .dashboard-container {
@@ -1118,7 +1188,7 @@ a:focus-visible {
     position: fixed;
     inset: 0 auto 0 0;
     padding: 1rem 0;
-    background: rgba(255, 255, 255, 0.88);
+    background: var(--role-surface);
     backdrop-filter: blur(18px);
     border-right: 1px solid rgba(13, 107, 93, 0.08);
     z-index: 90;
@@ -1155,7 +1225,7 @@ a:focus-visible {
     border: 1px solid rgba(13, 107, 93, 0.12);
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.92);
-    color: var(--accent);
+    color: var(--role-accent);
     font-size: 1.6rem;
     line-height: 1;
     display: inline-flex;
@@ -1182,8 +1252,8 @@ a:focus-visible {
 
 .sidebar-nav li.active a,
 .sidebar-nav a:hover {
-    background: rgba(13, 107, 93, 0.08);
-    color: var(--accent);
+    background: color-mix(in srgb, var(--role-accent) 10%, white);
+    color: var(--role-accent);
 }
 
 .main-content {
@@ -1208,7 +1278,7 @@ a:focus-visible {
     z-index: 40;
     padding: 0.95rem 1rem;
     border-radius: 22px;
-    background: rgba(255, 255, 255, 0.82);
+    background: var(--role-surface);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(13, 107, 93, 0.08);
     box-shadow: var(--shadow-soft);
@@ -1238,8 +1308,22 @@ a:focus-visible {
 .dashboard-menu-toggle span {
     width: 20px;
     height: 2px;
-    background: var(--accent);
+    background: var(--role-accent);
     transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dashboard-kicker {
+    margin-bottom: 0.2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--role-accent);
+}
+
+#welcomeMessage {
+    font-size: inherit;
+    color: inherit;
 }
 
 .dashboard-menu-toggle.active span:nth-child(1) {
@@ -1263,12 +1347,26 @@ a:focus-visible {
 .dashboard-user-email {
     color: var(--muted);
     font-weight: 700;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--role-accent) 8%, white);
 }
 
 .dashboard-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+.dashboard-page .btn-primary {
+    background: linear-gradient(135deg, var(--role-accent) 0%, var(--role-accent-2) 100%);
+    box-shadow: 0 16px 34px color-mix(in srgb, var(--role-accent) 24%, transparent);
+}
+
+.dashboard-page .btn-outline {
+    color: var(--role-accent);
+    border-color: color-mix(in srgb, var(--role-accent) 18%, white);
+    background: color-mix(in srgb, var(--role-accent) 6%, white);
 }
 
 .dashboard-actions .btn {
@@ -1286,6 +1384,126 @@ a:focus-visible {
     gap: 1.25rem;
 }
 
+.role-dashboard {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.role-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: 1.2rem;
+    overflow: hidden;
+    border-radius: 32px;
+    padding: 1.7rem;
+    color: #fff;
+    box-shadow: 0 22px 48px rgba(18, 66, 57, 0.18);
+    isolation: isolate;
+}
+
+.role-hero::before,
+.role-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(4px);
+    animation: glowDrift 8s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+.role-hero::before {
+    width: 220px;
+    height: 220px;
+    top: -60px;
+    right: -20px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.role-hero::after {
+    width: 180px;
+    height: 180px;
+    bottom: -40px;
+    left: 20%;
+    background: rgba(255, 255, 255, 0.10);
+    animation-delay: 1s;
+}
+
+.role-hero-doctor {
+    background: linear-gradient(135deg, #0d6b5d 0%, #1ca892 55%, #55cfb0 100%);
+}
+
+.role-hero-patient {
+    background: linear-gradient(135deg, #db6f2a 0%, #f39d3c 55%, #ffd16b 100%);
+}
+
+.role-hero-admin {
+    background: linear-gradient(135deg, #2457c5 0%, #4a74ff 55%, #8aa3ff 100%);
+}
+
+.role-hero-copy h2 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.12;
+    margin-bottom: 0.8rem;
+}
+
+.role-hero-copy p,
+.role-hero .eyebrow {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.role-hero .eyebrow::before {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.hero-tags span,
+.orbit-card {
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+}
+
+.hero-tags span {
+    padding: 0.62rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.hero-orbit {
+    display: grid;
+    align-content: center;
+    gap: 1rem;
+}
+
+.orbit-card {
+    border-radius: 24px;
+    padding: 1.1rem;
+    animation: softFloat 5s ease-in-out infinite;
+}
+
+.orbit-card-alt {
+    animation-delay: 0.7s;
+}
+
+.orbit-card strong {
+    display: block;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 0.3rem;
+}
+
+.orbit-card span {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
 .stats-cards {
     grid-template-columns: 1fr;
     margin-bottom: 2rem;
@@ -1297,8 +1515,23 @@ a:focus-visible {
     display: flex;
     align-items: center;
     gap: 1rem;
+    position: relative;
+    overflow: hidden;
     animation: fadeStagger 0.65s ease both;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 14px 34px rgba(18, 66, 57, 0.10);
+    border: 1px solid color-mix(in srgb, var(--role-accent) 12%, white);
+}
+
+.stat-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -30% -60% 30%;
+    height: 110px;
+    background: color-mix(in srgb, var(--role-accent-2) 24%, transparent);
+    filter: blur(24px);
+    opacity: 0.65;
 }
 
 .stats-cards .stat-card:nth-child(2) { animation-delay: 0.1s; }
@@ -1309,11 +1542,14 @@ a:focus-visible {
     width: 60px;
     height: 60px;
     border-radius: 18px;
-    background: var(--accent-3);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--role-accent) 16%, white), color-mix(in srgb, var(--role-accent-2) 22%, white));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    color: var(--role-accent);
+    font-size: 0.92rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
     animation: iconPulse 4.2s ease-in-out infinite;
 }
 
@@ -1322,7 +1558,7 @@ a:focus-visible {
 }
 
 .stat-info h3 {
-    color: var(--accent);
+    color: var(--role-accent);
 }
 
 .charts-section {
@@ -1334,6 +1570,29 @@ a:focus-visible {
 .dashboard-panel {
     border-radius: 24px;
     padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid color-mix(in srgb, var(--role-accent) 12%, white);
+    box-shadow: var(--shadow-soft);
+}
+
+.chart-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -10% -35% 45%;
+    height: 140px;
+    background: color-mix(in srgb, var(--role-accent-2) 28%, transparent);
+    filter: blur(26px);
+}
+
+.card-intro {
+    margin: 0.4rem 0 1.1rem;
+    max-width: 55ch;
+    font-size: 0.95rem;
 }
 
 .chart-placeholder {
@@ -1347,8 +1606,9 @@ a:focus-visible {
 .chart-bar {
     width: 52px;
     border-radius: 16px 16px 0 0;
-    background: linear-gradient(180deg, var(--accent-2), var(--accent));
+    background: linear-gradient(180deg, var(--role-accent-2), var(--role-accent));
     animation: barRise 1.2s ease-out both;
+    box-shadow: 0 12px 24px color-mix(in srgb, var(--role-accent) 28%, transparent);
 }
 
 .chart-bar:nth-child(2) { animation-delay: 0.12s; }
@@ -1360,9 +1620,9 @@ a:focus-visible {
     min-height: 180px;
     border-radius: 24px;
     background:
-        linear-gradient(180deg, rgba(26, 163, 141, 0.18), rgba(26, 163, 141, 0.02)),
-        linear-gradient(90deg, rgba(13, 107, 93, 0.10) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(13, 107, 93, 0.10) 1px, transparent 1px);
+        linear-gradient(180deg, color-mix(in srgb, var(--role-accent-2) 18%, white), rgba(26, 163, 141, 0.02)),
+        linear-gradient(90deg, color-mix(in srgb, var(--role-accent) 10%, white) 1px, transparent 1px),
+        linear-gradient(0deg, color-mix(in srgb, var(--role-accent) 10%, white) 1px, transparent 1px);
     background-size: auto, 38px 38px, 38px 38px;
     position: relative;
     overflow: hidden;
@@ -1373,7 +1633,7 @@ a:focus-visible {
     position: absolute;
     inset: auto 8% 22% 8%;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    background: linear-gradient(90deg, var(--role-accent), var(--role-accent-2));
     border-radius: 999px;
     transform-origin: left;
     animation: lineDraw 1.4s ease-out both;
@@ -1387,9 +1647,51 @@ a:focus-visible {
     width: 14px;
     height: 14px;
     border-radius: 999px;
-    background: var(--accent-2);
-    box-shadow: 0 0 0 8px rgba(26, 163, 141, 0.12);
+    background: var(--role-accent-2);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--role-accent-2) 18%, white);
     animation: nodeTravel 3.4s ease-in-out infinite;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.priority-panel {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.84)),
+        linear-gradient(135deg, color-mix(in srgb, var(--role-accent) 5%, white), transparent);
+}
+
+.priority-stack {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.priority-item,
+.activity-item,
+.dashboard-list-item {
+    border: 1px solid color-mix(in srgb, var(--role-accent) 10%, white);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 250, 0.88));
+    box-shadow: 0 10px 22px rgba(18, 66, 57, 0.06);
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+    animation: fadeStagger 0.7s ease both;
+}
+
+.priority-item:nth-child(2) { animation-delay: 0.1s; }
+.priority-item:nth-child(3) { animation-delay: 0.2s; }
+
+.priority-item strong {
+    color: var(--role-accent);
 }
 
 .activity-list,
@@ -1415,11 +1717,14 @@ a:focus-visible {
     width: 48px;
     height: 48px;
     border-radius: 16px;
-    background: var(--accent-3);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--role-accent) 14%, white), color-mix(in srgb, var(--role-accent-2) 22%, white));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    color: var(--role-accent);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
     transition: transform 0.3s ease;
 }
 
@@ -1452,7 +1757,7 @@ a:focus-visible {
 .dashboard-list .dashboard-list-item:nth-child(3) { animation-delay: 0.2s; }
 
 .dashboard-list-item strong {
-    color: var(--accent);
+    color: var(--role-accent);
 }
 
 [data-animate] {
@@ -1552,7 +1857,8 @@ a:focus-visible {
     .service-grid,
     .doctor-showcase,
     .testimonial-strip,
-    .stats-cards {
+    .stats-cards,
+    .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -1564,6 +1870,14 @@ a:focus-visible {
 
     .hero-visual {
         min-height: 540px;
+    }
+
+    .role-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-card.featured {
+        transform: none;
     }
 }
 
@@ -1617,6 +1931,27 @@ a:focus-visible {
     .testimonial-strip,
     .charts-section {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .dashboard-grid,
+    .stats-cards,
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+
+    .role-hero {
+        padding: 1.35rem;
+    }
+
+    .hero-tags {
+        gap: 0.55rem;
+    }
+
+    .dashboard-user-panel {
+        width: 100%;
+        justify-content: space-between;
     }
 }
 
@@ -1685,6 +2020,22 @@ a:focus-visible {
 
     .dashboard-menu-toggle {
         display: inline-flex;
+    }
+
+    .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        min-height: 100vh;
+        transform: translateX(-100%);
+        box-shadow: 18px 0 40px rgba(16, 56, 48, 0.12);
+    }
+
+    .sidebar-close {
+        display: inline-flex;
+    }
+
+    .main-content {
+        padding: 1rem;
     }
 }
 

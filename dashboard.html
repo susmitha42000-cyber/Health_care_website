@@ -10,13 +10,12 @@
 </head>
 <body class="dashboard-page">
     <div class="dashboard-container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <a href="dashboard.html" class="auth-brand sidebar-brand">
                     <img class="site-logo" src="assets/Logo.webp" alt="Stackly logo">
                 </a>
-                <button type="button" class="sidebar-close" id="sidebarCloseBtn" aria-label="Close dashboard menu">×</button>
+                <button type="button" class="sidebar-close" id="sidebarCloseBtn" aria-label="Close dashboard menu">x</button>
             </div>
             <nav class="sidebar-nav">
                 <ul>
@@ -28,9 +27,7 @@
             </nav>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Header -->
             <header class="dashboard-header">
                 <div class="dashboard-header-main">
                     <button type="button" class="dashboard-menu-toggle" id="dashboardMenuToggle" aria-label="Toggle dashboard menu" aria-expanded="false">
@@ -38,7 +35,10 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <h1 id="welcomeMessage">Welcome, User</h1>
+                    <div>
+                        <p class="dashboard-kicker" id="dashboardKicker">Care command center</p>
+                        <h1 id="welcomeMessage">Welcome, User</h1>
+                    </div>
                 </div>
                 <div class="dashboard-user-panel">
                     <span class="dashboard-user-email" id="dashboardUserEmail">user@example.com</span>
@@ -46,41 +46,63 @@
                 </div>
             </header>
 
-            <div class="dashboard-actions">
-                <a href="404.html" class="btn btn-primary">New Appointment</a>
-                <a href="404.html" class="btn btn-outline">Generate Report</a>
-                <a href="404.html" class="btn btn-outline">Patient Search</a>
-                <a href="404.html" class="btn btn-outline">Review Tasks</a>
+            <div class="dashboard-actions" id="dashboardActions">
+                <a href="404.html" class="btn btn-primary" id="actionBtn1">Open</a>
+                <a href="404.html" class="btn btn-outline" id="actionBtn2">Open</a>
+                <a href="404.html" class="btn btn-outline" id="actionBtn3">Open</a>
+                <a href="404.html" class="btn btn-outline" id="actionBtn4">Open</a>
             </div>
 
-            <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <section id="overviewSection">
                     <div id="doctorDashboard" class="role-dashboard">
+                        <div class="role-hero role-hero-doctor" data-animate="zoom-in">
+                            <div class="role-hero-copy">
+                                <span class="eyebrow">Doctor Workspace</span>
+                                <h2>Run your clinic day with faster decisions and calmer patient flow.</h2>
+                                <p>Track consultations, review pending follow-ups, and keep your team aligned during a busy shift.</p>
+                                <div class="hero-tags">
+                                    <span>Ward handoff ready</span>
+                                    <span>Lab alerts synced</span>
+                                    <span>Focus mode on</span>
+                                </div>
+                            </div>
+                            <div class="hero-orbit">
+                                <div class="orbit-card">
+                                    <strong>92%</strong>
+                                    <span>Schedule utilization</span>
+                                </div>
+                                <div class="orbit-card orbit-card-alt">
+                                    <strong>6</strong>
+                                    <span>Critical follow-ups</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="stats-cards">
                             <div class="stat-card">
-                                <div class="stat-icon">🩺</div>
+                                <div class="stat-icon">MD</div>
                                 <div class="stat-info">
                                     <h3>18</h3>
-                                    <p>Today's Consultations</p>
+                                    <p>Consultations Today</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">👥</div>
+                                <div class="stat-icon">PT</div>
                                 <div class="stat-info">
                                     <h3>34</h3>
                                     <p>Active Patients</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">📋</div>
+                                <div class="stat-icon">RX</div>
                                 <div class="stat-info">
                                     <h3>12</h3>
-                                    <p>Prescriptions</p>
+                                    <p>Prescriptions Ready</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">⏱️</div>
+                                <div class="stat-icon">FU</div>
                                 <div class="stat-info">
                                     <h3>4</h3>
                                     <p>Follow-ups Due</p>
@@ -90,37 +112,99 @@
 
                         <div class="charts-section">
                             <div class="chart-card">
-                                <h3>Today's Schedule</h3>
+                                <h3>Clinic Rhythm</h3>
+                                <p class="card-intro">Morning slots are full, while late afternoon still has room for quick reviews.</p>
                                 <div class="chart-placeholder">
-                                    <div class="chart-bar" style="height: 75%;"></div>
-                                    <div class="chart-bar" style="height: 90%;"></div>
-                                    <div class="chart-bar" style="height: 65%;"></div>
-                                    <div class="chart-bar" style="height: 80%;"></div>
+                                    <div class="chart-bar" style="height: 72%;"></div>
+                                    <div class="chart-bar" style="height: 92%;"></div>
+                                    <div class="chart-bar" style="height: 68%;"></div>
+                                    <div class="chart-bar" style="height: 81%;"></div>
                                 </div>
                             </div>
                             <div class="chart-card">
-                                <h3>Patient Outcome Trends</h3>
+                                <h3>Recovery Trend</h3>
+                                <p class="card-intro">Post-treatment recovery scores have stayed above target for the last three days.</p>
                                 <div class="chart-placeholder">
                                     <div class="chart-line"></div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="dashboard-grid">
+                            <div class="dashboard-panel">
+                                <h3>On Duty Team</h3>
+                                <div class="dashboard-list">
+                                    <div class="dashboard-list-item">
+                                        <span>Dr. Emily Smith</span>
+                                        <strong>Available</strong>
+                                    </div>
+                                    <div class="dashboard-list-item">
+                                        <span>Dr. Michael Johnson</span>
+                                        <strong>In Surgery</strong>
+                                    </div>
+                                    <div class="dashboard-list-item">
+                                        <span>Nurse Sarah Williams</span>
+                                        <strong>Ward A</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-panel priority-panel">
+                                <h3>Priority Queue</h3>
+                                <div class="priority-stack">
+                                    <div class="priority-item">
+                                        <span>Room 12 lab review</span>
+                                        <strong>High</strong>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span>Discharge approval for Mr. Cole</span>
+                                        <strong>Medium</strong>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span>Cardiology callback</span>
+                                        <strong>Today</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="dashboard-panel">
-                            <h3>On Duty Team</h3>
-                            <div class="dashboard-list">
-                                <div class="dashboard-list-item">
-                                    <span>Dr. Emily Smith</span>
-                                    <strong>Online</strong>
-                                </div>
-                                <div class="dashboard-list-item">
-                                    <span>Dr. Michael Johnson</span>
-                                    <strong>In Surgery</strong>
-                                </div>
-                                <div class="dashboard-list-item">
-                                    <span>Dr. Sarah Williams</span>
-                                    <strong>Available</strong>
-                                </div>
+                            <h3>Specialist Team</h3>
+                            <p class="card-intro">Keep your care team visible during the shift with a quick view of the specialists leading today’s patient rounds.</p>
+                            <div class="doctor-showcase">
+                                <article class="doctor-card featured">
+                                    <div class="doctor-photo-wrap">
+                                        <img class="doctor-photo" src="assets/Emilly smith.webp" alt="Portrait of Dr. Emily Smith">
+                                    </div>
+                                    <div class="doctor-info">
+                                        <h3>Dr. Emily Smith</h3>
+                                        <strong class="doctor-role">Cardiology Lead</strong>
+                                        <p>Cardiology lead coordinating complex follow-up reviews and ward consults.</p>
+                                        <span>On rounds now</span>
+                                    </div>
+                                </article>
+                                <article class="doctor-card">
+                                    <div class="doctor-photo-wrap">
+                                        <img class="doctor-photo" src="assets/Michael johnson.webp" alt="Portrait of Dr. Michael Johnson">
+                                    </div>
+                                    <div class="doctor-info">
+                                        <h3>Dr. Michael Johnson</h3>
+                                        <strong class="doctor-role">General Surgery</strong>
+                                        <p>General surgery specialist covering post-op recovery planning and case handoff.</p>
+                                        <span>Next surgery at 2:30 PM</span>
+                                    </div>
+                                </article>
+                                <article class="doctor-card">
+                                    <div class="doctor-photo-wrap">
+                                        <img class="doctor-photo" src="assets/Sarah williams.webp" alt="Portrait of Dr. Sarah Williams">
+                                    </div>
+                                    <div class="doctor-info">
+                                        <h3>Dr. Sarah Williams</h3>
+                                        <strong class="doctor-role">Internal Medicine</strong>
+                                        <p>Internal medicine consultant monitoring long-term treatment plans and discharge readiness.</p>
+                                        <span>Available for consults</span>
+                                    </div>
+                                </article>
                             </div>
                         </div>
 
@@ -128,23 +212,23 @@
                             <h3>Doctor Activity</h3>
                             <div class="activity-list">
                                 <div class="activity-item">
-                                    <div class="activity-icon">📅</div>
+                                    <div class="activity-icon">LAB</div>
                                     <div class="activity-content">
-                                        <p>Review patient lab results</p>
+                                        <p>Reviewed blood panel for Patient #212 and flagged one follow-up.</p>
                                         <span>1 hour ago</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
-                                    <div class="activity-icon">📝</div>
+                                    <div class="activity-icon">PLAN</div>
                                     <div class="activity-content">
-                                        <p>Updated treatment plan for Patient #212</p>
+                                        <p>Updated the recovery plan for a post-op patient in Ward B.</p>
                                         <span>3 hours ago</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
-                                    <div class="activity-icon">💊</div>
+                                    <div class="activity-icon">RX</div>
                                     <div class="activity-content">
-                                        <p>Prepared prescription for follow-up</p>
+                                        <p>Approved three repeat prescriptions before the pharmacy cutoff.</p>
                                         <span>5 hours ago</span>
                                     </div>
                                 </div>
@@ -153,69 +237,114 @@
                     </div>
 
                     <div id="patientDashboard" class="role-dashboard hidden">
+                        <div class="role-hero role-hero-patient" data-animate="zoom-in">
+                            <div class="role-hero-copy">
+                                <span class="eyebrow">Patient Dashboard</span>
+                                <h2>Your care journey is easier to follow when every update feels clear and friendly.</h2>
+                                <p>See your next visit, track wellness goals, and stay on top of medication and reports without stress.</p>
+                                <div class="hero-tags">
+                                    <span>Medication reminders</span>
+                                    <span>Doctor notes available</span>
+                                    <span>Insurance updated</span>
+                                </div>
+                            </div>
+                            <div class="hero-orbit">
+                                <div class="orbit-card">
+                                    <strong>85%</strong>
+                                    <span>Wellness score</span>
+                                </div>
+                                <div class="orbit-card orbit-card-alt">
+                                    <strong>2</strong>
+                                    <span>Upcoming visits</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="stats-cards">
                             <div class="stat-card">
-                                <div class="stat-icon">📆</div>
+                                <div class="stat-icon">AP</div>
                                 <div class="stat-info">
                                     <h3>2</h3>
                                     <p>Upcoming Appointments</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">🩺</div>
+                                <div class="stat-icon">RX</div>
                                 <div class="stat-info">
                                     <h3>3</h3>
-                                    <p>Prescriptions Active</p>
+                                    <p>Active Prescriptions</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">📊</div>
+                                <div class="stat-icon">WL</div>
                                 <div class="stat-info">
                                     <h3>85%</h3>
                                     <p>Wellness Score</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">❤️</div>
+                                <div class="stat-icon">HR</div>
                                 <div class="stat-info">
                                     <h3>72 bpm</h3>
-                                    <p>Last Pulse Reading</p>
+                                    <p>Latest Pulse</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="charts-section">
                             <div class="chart-card">
-                                <h3>Health Progress</h3>
+                                <h3>Weekly Progress</h3>
+                                <p class="card-intro">Hydration, movement, and sleep goals are trending in the right direction this week.</p>
                                 <div class="chart-placeholder">
-                                    <div class="chart-bar" style="height: 60%;"></div>
-                                    <div class="chart-bar" style="height: 80%;"></div>
-                                    <div class="chart-bar" style="height: 70%;"></div>
-                                    <div class="chart-bar" style="height: 85%;"></div>
+                                    <div class="chart-bar" style="height: 58%;"></div>
+                                    <div class="chart-bar" style="height: 82%;"></div>
+                                    <div class="chart-bar" style="height: 71%;"></div>
+                                    <div class="chart-bar" style="height: 88%;"></div>
                                 </div>
                             </div>
                             <div class="chart-card">
-                                <h3>Medication Adherence</h3>
+                                <h3>Medication Consistency</h3>
+                                <p class="card-intro">Your reminder completion rate is holding steady with only one missed dose this week.</p>
                                 <div class="chart-placeholder">
                                     <div class="chart-line"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="dashboard-panel">
-                            <h3>Care Plan Summary</h3>
-                            <div class="dashboard-list">
-                                <div class="dashboard-list-item">
-                                    <span>Medication refill requested</span>
-                                    <strong>Today</strong>
+                        <div class="dashboard-grid">
+                            <div class="dashboard-panel">
+                                <h3>Care Plan Summary</h3>
+                                <div class="dashboard-list">
+                                    <div class="dashboard-list-item">
+                                        <span>Prescription refill request</span>
+                                        <strong>Today</strong>
+                                    </div>
+                                    <div class="dashboard-list-item">
+                                        <span>Follow-up with Dr. Reed</span>
+                                        <strong>Tomorrow</strong>
+                                    </div>
+                                    <div class="dashboard-list-item">
+                                        <span>Lab report review</span>
+                                        <strong>Within 24 hrs</strong>
+                                    </div>
                                 </div>
-                                <div class="dashboard-list-item">
-                                    <span>Follow-up appointment</span>
-                                    <strong>Tomorrow</strong>
-                                </div>
-                                <div class="dashboard-list-item">
-                                    <span>Lab report review</span>
-                                    <strong>Within 24 hrs</strong>
+                            </div>
+
+                            <div class="dashboard-panel priority-panel">
+                                <h3>Healthy Habits</h3>
+                                <div class="priority-stack">
+                                    <div class="priority-item">
+                                        <span>Walk for 30 minutes</span>
+                                        <strong>Goal</strong>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span>Drink 2 liters of water</span>
+                                        <strong>On track</strong>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span>Sleep before 11 PM</span>
+                                        <strong>Tonight</strong>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -224,23 +353,23 @@
                             <h3>Patient Notes</h3>
                             <div class="activity-list">
                                 <div class="activity-item">
-                                    <div class="activity-icon">🩺</div>
+                                    <div class="activity-icon">VISIT</div>
                                     <div class="activity-content">
-                                        <p>Next appointment with Dr. Reed</p>
+                                        <p>Your follow-up with Dr. Reed is prepared with notes and questions ready.</p>
                                         <span>Tomorrow, 10:00 AM</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
-                                    <div class="activity-icon">💊</div>
+                                    <div class="activity-icon">RX</div>
                                     <div class="activity-content">
-                                        <p>Prescription refill ready</p>
+                                        <p>Your prescription refill has been approved and sent to the pharmacy.</p>
                                         <span>Today</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
-                                    <div class="activity-icon">📋</div>
+                                    <div class="activity-icon">LAB</div>
                                     <div class="activity-content">
-                                        <p>Lab report available for review</p>
+                                        <p>A new report is available with a short doctor summary in plain language.</p>
                                         <span>3 hours ago</span>
                                     </div>
                                 </div>
@@ -249,30 +378,53 @@
                     </div>
 
                     <div id="adminDashboard" class="role-dashboard hidden">
+                        <div class="role-hero role-hero-admin" data-animate="zoom-in">
+                            <div class="role-hero-copy">
+                                <span class="eyebrow">Admin Control</span>
+                                <h2>Keep the platform secure, responsive, and fully staffed across every care workflow.</h2>
+                                <p>Watch onboarding, uptime, support requests, and security alerts from one high-visibility command center.</p>
+                                <div class="hero-tags">
+                                    <span>Approvals pending</span>
+                                    <span>Uptime stable</span>
+                                    <span>Audit trail live</span>
+                                </div>
+                            </div>
+                            <div class="hero-orbit">
+                                <div class="orbit-card">
+                                    <strong>99.99%</strong>
+                                    <span>Platform uptime</span>
+                                </div>
+                                <div class="orbit-card orbit-card-alt">
+                                    <strong>14</strong>
+                                    <span>Pending requests</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="stats-cards">
                             <div class="stat-card">
-                                <div class="stat-icon">👥</div>
+                                <div class="stat-icon">USR</div>
                                 <div class="stat-info">
                                     <h3>420</h3>
                                     <p>Total Users</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">🩺</div>
+                                <div class="stat-icon">DOC</div>
                                 <div class="stat-info">
                                     <h3>78</h3>
                                     <p>Active Doctors</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">⏳</div>
+                                <div class="stat-icon">REQ</div>
                                 <div class="stat-info">
                                     <h3>14</h3>
                                     <p>Pending Requests</p>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon">🔔</div>
+                                <div class="stat-icon">ALR</div>
                                 <div class="stat-info">
                                     <h3>7</h3>
                                     <p>System Alerts</p>
@@ -283,35 +435,57 @@
                         <div class="charts-section">
                             <div class="chart-card">
                                 <h3>Platform Usage</h3>
+                                <p class="card-intro">Traffic remains high after lunch, with admin approvals peaking just before evening.</p>
                                 <div class="chart-placeholder">
-                                    <div class="chart-bar" style="height: 90%;"></div>
-                                    <div class="chart-bar" style="height: 75%;"></div>
-                                    <div class="chart-bar" style="height: 85%;"></div>
-                                    <div class="chart-bar" style="height: 95%;"></div>
+                                    <div class="chart-bar" style="height: 91%;"></div>
+                                    <div class="chart-bar" style="height: 76%;"></div>
+                                    <div class="chart-bar" style="height: 84%;"></div>
+                                    <div class="chart-bar" style="height: 96%;"></div>
                                 </div>
                             </div>
                             <div class="chart-card">
                                 <h3>Account Growth</h3>
+                                <p class="card-intro">New registrations continue to rise while verification clearance times are improving.</p>
                                 <div class="chart-placeholder">
                                     <div class="chart-line"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="dashboard-panel">
-                            <h3>Operations Summary</h3>
-                            <div class="dashboard-list">
-                                <div class="dashboard-list-item">
-                                    <span>Pending approvals</span>
-                                    <strong>14</strong>
+                        <div class="dashboard-grid">
+                            <div class="dashboard-panel">
+                                <h3>Operations Summary</h3>
+                                <div class="dashboard-list">
+                                    <div class="dashboard-list-item">
+                                        <span>Pending approvals</span>
+                                        <strong>14</strong>
+                                    </div>
+                                    <div class="dashboard-list-item">
+                                        <span>Security alerts</span>
+                                        <strong>7</strong>
+                                    </div>
+                                    <div class="dashboard-list-item">
+                                        <span>Service uptime</span>
+                                        <strong>99.99%</strong>
+                                    </div>
                                 </div>
-                                <div class="dashboard-list-item">
-                                    <span>Security alerts</span>
-                                    <strong>7</strong>
-                                </div>
-                                <div class="dashboard-list-item">
-                                    <span>Service uptime</span>
-                                    <strong>99.99%</strong>
+                            </div>
+
+                            <div class="dashboard-panel priority-panel">
+                                <h3>Control Tower</h3>
+                                <div class="priority-stack">
+                                    <div class="priority-item">
+                                        <span>Approve 5 doctor profiles</span>
+                                        <strong>Queue</strong>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span>Review API latency spike</span>
+                                        <strong>Watch</strong>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span>Rotate weekly audit export</span>
+                                        <strong>Today</strong>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -320,23 +494,23 @@
                             <h3>Admin Activity</h3>
                             <div class="activity-list">
                                 <div class="activity-item">
-                                    <div class="activity-icon">✅</div>
+                                    <div class="activity-icon">OK</div>
                                     <div class="activity-content">
-                                        <p>Approved new doctor accounts</p>
+                                        <p>Approved new doctor accounts and pushed them to live access.</p>
                                         <span>30 minutes ago</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
-                                    <div class="activity-icon">🔧</div>
+                                    <div class="activity-icon">AUTH</div>
                                     <div class="activity-content">
-                                        <p>System access permissions reviewed</p>
+                                        <p>Reviewed role permissions for staff who changed departments.</p>
                                         <span>2 hours ago</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
-                                    <div class="activity-icon">🛡️</div>
+                                    <div class="activity-icon">SAFE</div>
                                     <div class="activity-content">
-                                        <p>Security audit completed</p>
+                                        <p>Completed the daily security audit with no critical issues detected.</p>
                                         <span>5 hours ago</span>
                                     </div>
                                 </div>
@@ -347,127 +521,25 @@
 
                 <section id="appointmentsSection" class="hidden">
                     <div class="section-header">
-                        <h2>Appointments</h2>
-                        <p>View upcoming patient visits, meeting schedules, and appointment details.</p>
+                        <h2 id="appointmentsTitle">Appointments</h2>
+                        <p id="appointmentsDescription">View upcoming schedules and coordination details.</p>
                     </div>
-                    <div class="stats-cards">
-                        <div class="stat-card">
-                            <div class="stat-icon">📅</div>
-                            <div class="stat-info">
-                                <h3>8</h3>
-                                <p>Upcoming Slots</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">⏰</div>
-                            <div class="stat-info">
-                                <h3>3</h3>
-                                <p>Today</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">✅</div>
-                            <div class="stat-info">
-                                <h3>5</h3>
-                                <p>Confirmed</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">⚠️</div>
-                            <div class="stat-info">
-                                <h3>1</h3>
-                                <p>Pending</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="stats-cards" id="appointmentsStats"></div>
                     <div class="activity-section">
-                        <h3>Appointment Details</h3>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-icon">👤</div>
-                                <div class="activity-content">
-                                    <p>Patient: Sarah Lee — Follow-up</p>
-                                    <span>Today, 11:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">👤</div>
-                                <div class="activity-content">
-                                    <p>Patient: Mark Diaz — New consultation</p>
-                                    <span>Tomorrow, 09:00 AM</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">👤</div>
-                                <div class="activity-content">
-                                    <p>Patient: Emma Patel — Lab review</p>
-                                    <span>Tomorrow, 02:00 PM</span>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 id="appointmentsListTitle">Appointment Details</h3>
+                        <div class="activity-list" id="appointmentsList"></div>
                     </div>
                 </section>
 
                 <section id="reportsSection" class="hidden">
                     <div class="section-header">
-                        <h2>Reports</h2>
-                        <p>Access recent reports, analytics summaries, and health records.</p>
+                        <h2 id="reportsTitle">Reports</h2>
+                        <p id="reportsDescription">Access recent reports, analytics summaries, and health records.</p>
                     </div>
-                    <div class="stats-cards">
-                        <div class="stat-card">
-                            <div class="stat-icon">📊</div>
-                            <div class="stat-info">
-                                <h3>14</h3>
-                                <p>Recent Reports</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">🧾</div>
-                            <div class="stat-info">
-                                <h3>5</h3>
-                                <p>New Summaries</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">🔍</div>
-                            <div class="stat-info">
-                                <h3>9</h3>
-                                <p>Reviewed</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">📁</div>
-                            <div class="stat-info">
-                                <h3>20</h3>
-                                <p>Archived</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="stats-cards" id="reportsStats"></div>
                     <div class="activity-section">
-                        <h3>Latest Reports</h3>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-icon">🧪</div>
-                                <div class="activity-content">
-                                    <p>Blood test results for Patient #543</p>
-                                    <span>Completed 1 hour ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">📋</div>
-                                <div class="activity-content">
-                                    <p>Weekly health summary</p>
-                                    <span>Completed yesterday</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">🖥️</div>
-                                <div class="activity-content">
-                                    <p>System performance report</p>
-                                    <span>Completed 2 days ago</span>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 id="reportsListTitle">Latest Reports</h3>
+                        <div class="activity-list" id="reportsList"></div>
                     </div>
                 </section>
             </div>
@@ -475,7 +547,7 @@
     </div>
 
     <a href="#overviewSection" class="fab-button fab-button-dashboard" aria-label="Back to top of dashboard">
-        <span class="fab-icon">↑</span>
+        <span class="fab-icon">^</span>
         <span class="fab-label">Top</span>
     </a>
 
