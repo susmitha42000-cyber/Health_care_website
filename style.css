@@ -1165,17 +1165,17 @@ a:focus-visible {
 }
 
 .dashboard-page.theme-patient {
-    --role-accent: #db6f2a;
-    --role-accent-2: #f4a742;
-    --role-glow: rgba(244, 167, 66, 0.24);
-    --role-surface: rgba(255, 249, 241, 0.88);
+    --role-accent: #0d6b5d;
+    --role-accent-2: #20b29a;
+    --role-glow: rgba(32, 178, 154, 0.22);
+    --role-surface: rgba(255, 255, 255, 0.86);
 }
 
 .dashboard-page.theme-admin {
-    --role-accent: #2457c5;
-    --role-accent-2: #6d8cff;
-    --role-glow: rgba(109, 140, 255, 0.24);
-    --role-surface: rgba(245, 248, 255, 0.88);
+    --role-accent: #0d6b5d;
+    --role-accent-2: #20b29a;
+    --role-glow: rgba(32, 178, 154, 0.22);
+    --role-surface: rgba(255, 255, 255, 0.86);
 }
 
 .dashboard-container {
@@ -1434,11 +1434,11 @@ a:focus-visible {
 }
 
 .role-hero-patient {
-    background: linear-gradient(135deg, #db6f2a 0%, #f39d3c 55%, #ffd16b 100%);
+    background: linear-gradient(135deg, #0d6b5d 0%, #1ca892 55%, #55cfb0 100%);
 }
 
 .role-hero-admin {
-    background: linear-gradient(135deg, #2457c5 0%, #4a74ff 55%, #8aa3ff 100%);
+    background: linear-gradient(135deg, #0d6b5d 0%, #1ca892 55%, #55cfb0 100%);
 }
 
 .role-hero-copy h2 {
